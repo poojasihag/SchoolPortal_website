@@ -20,7 +20,7 @@ export default function Dashboard() {
   ];
 
   return (
-    <div className="w-full h-screen bg-gray-100 p-0 m-0">
+    <div className="w-full h-screen bg-gray-200 p-0 m-0">
       <header className="flex justify-between items-center bg-white p-4 shadow-md">
         <h1 className="text-xl font-bold text-blue-600">
           <div className="h-5 w-5 inline-block bg-blue-500"></div>SchoolPortal
@@ -66,7 +66,7 @@ export default function Dashboard() {
           <h3 className="text-lg font-semibold">Quick Actions</h3>
           <div className="grid grid-cols-5 gap-8 mt-4">
             {actions.map((action) => (
-              <div key={action.name} className="bg-white p-8 shadow-md rounded-lg flex flex-col items-center justify-center space-x-2">
+              <div key={action.name} className="bg-white p-8 shadow-sm rounded-lg flex flex-col items-center justify-center space-x-2">
                 <div className="rounded-full bg-gray-100 p-3">{action.icon}</div>
                 <p className="text-gray-700 font-semibold">{action.name}</p>
               </div>
@@ -75,17 +75,17 @@ export default function Dashboard() {
         </div>
       </main>
 
-      <footer className=" text-black flex justify-between items-center  p-4 mt-4">
+      <footer className=" text-black flex bg-gray-50 justify-evenly items-center  pt-8 pb-16 mt-5 ">
       <div>
-        <h4>SchoolPortal</h4>
+        <h4 className="font-bold">SchoolPortal</h4>
         <p>&copy; 2024 School Portal. All Rights Reserved.</p>
       </div>
       <div>
-        <h4>Quick Links</h4>
+        <h4 className="font-bold">Quick Links</h4>
         <p>About| Contact| Privacy Policy| Terms of Service</p>
       </div>
       <div>
-        <h4>Contact Us</h4>
+        <h4 className="font-bold">Contact Us</h4>
         <p>support@schoolportal.com| +91 1234567890</p>
       </div>
       
