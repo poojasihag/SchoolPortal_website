@@ -6,6 +6,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import Footer from "@/components/Footer";
 import { GoSearch } from "react-icons/go";
 import { SlArrowLeft } from "react-icons/sl";
+import { useNavigate } from "react-router-dom";
 
 // Define the Notice type
 interface Notice {
@@ -105,6 +106,16 @@ export default function NoticeBoard() {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const noticesPerPage = 4;
 
+  const navigate = useNavigate();
+
+  const handleBackClick = () => {
+    if (page === 1) {
+      navigate("/"); 
+    } else {
+      setPage((prev) => prev - 1); 
+    }
+  };
+
   // Filter notices based on search term (Notice No)
   const filteredNotices: Notice[] = allNotices.filter((notice) =>
     notice.id.toString().includes(searchTerm)
@@ -125,7 +136,8 @@ export default function NoticeBoard() {
     <div className="min-h-screen bg-gray-50 p-4">
       {/* Header */}
       <header className="flex items-center justify-between flex-wrap gap-4 p-4 bg-white shadow mb-6 relative">
-        <SlArrowLeft className="absolute left-4 font-bold" />
+        <SlArrowLeft className="absolute left-4 font-bold  cursor-pointer " 
+         onClick={handleBackClick}/>
         <div className="text-2xl font-bold pl-4">Notice Board</div>
       </header>
 
