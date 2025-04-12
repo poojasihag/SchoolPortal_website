@@ -13,26 +13,20 @@ import {
   UserCheck,
   FilePenLine,
   Menu,
-  X
+  X,
 } from "lucide-react";
 
 import { FaBell } from "react-icons/fa";
+import Footer from "@/components/Footer";
+
 export default function Dashboard() {
   const [attendanceMarked, setAttendanceMarked] = useState<boolean>(false);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [showNoticeBoard, setShowNoticeBoard] = useState(false);
 
-  const actions = [
-    { name: "Inbox", icon: <Mail size={20} /> },
-    { name: "Attendance", icon: <UserCheck size={20} /> },
-    { name: "Timetable", icon: <Calendar size={20} /> },
-    { name: "Fees", icon: <CreditCard size={20} /> },
-    { name: "Notice", icon: <Bell size={20} /> },
-    { name: "Homework", icon: <Clipboard size={20} /> },
-    { name: "eLibrary", icon: <Library size={20} /> },
-    { name: "Circular", icon: <FileText size={20} /> },
-    { name: "Leave Request", icon: <FilePenLine size={20} /> },
-    { name: "Examination", icon: <BookOpen size={20} /> },
-  ];
+  const showNoticeBoardFunction = () => {
+    setShowNoticeBoard(!showNoticeBoard);
+  };
 
   return (
     <div className="w-full h-screen bg-gray-200 p-0 m-0">
@@ -44,16 +38,47 @@ export default function Dashboard() {
         <div className="md:hidden" onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? <X size={24} /> : <Menu size={24} />}
         </div>
-        <nav className={`absolute md:static top-16 left-0 w-full bg-white shadow-md md:shadow-none md:flex md:space-x-6 font-medium ${menuOpen ? 'block' : 'hidden'}`}>
-          <Link to="/" className="block px-4 py-2 text-gray-700 hover:text-blue-500">Dashboard</Link>
-          <Link className="block px-4 py-2 text-gray-700 hover:text-blue-500" to="/academic">Academic</Link>
-          <Link className="block px-4 py-2 text-gray-700 hover:text-blue-500" to="/communication">Communication</Link>
-          <Link className="block px-4 py-2 text-gray-700 hover:text-blue-500" to="/resources">Resources</Link>
-          <Link className="block px-4 py-2 text-gray-700 hover:text-blue-500" to="/calender">Calendar</Link>
+        <nav
+          className={`absolute md:static top-16 left-0 w-full bg-white shadow-md md:shadow-none md:flex md:space-x-6 font-medium ${
+            menuOpen ? "block" : "hidden"
+          }`}
+        >
+          <Link
+            to="/"
+            className="block px-4 py-2 text-gray-700 hover:text-blue-500"
+          >
+            Dashboard
+          </Link>
+          <Link
+            className="block px-4 py-2 text-gray-700 hover:text-blue-500"
+            to="/academic"
+          >
+            Academic
+          </Link>
+          <Link
+            className="block px-4 py-2 text-gray-700 hover:text-blue-500"
+            to="/communication"
+          >
+            Communication
+          </Link>
+          <Link
+            className="block px-4 py-2 text-gray-700 hover:text-blue-500"
+            to="/resources"
+          >
+            Resources
+          </Link>
+          <Link
+            className="block px-4 py-2 text-gray-700 hover:text-blue-500"
+            to="/calender"
+          >
+            Calendar
+          </Link>
         </nav>
         <div className="hidden md:flex justify-center items-center gap-2">
           <FaBell className="inline-block" />
-          <div className="rounded-full bg-gray-300 flex justify-center items-center m-0 h-10 w-10">A</div>
+          <div className="rounded-full bg-gray-300 flex justify-center items-center m-0 h-10 w-10">
+            A
+          </div>
         </div>
       </header>
 
@@ -106,35 +131,92 @@ export default function Dashboard() {
         <div className="mt-8">
           <h3 className="text-lg font-semibold">Quick Actions</h3>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mt-4">
-            {actions.map((action) => (
-              <div
-                key={action.name}
-                className="bg-white p-8 shadow-sm rounded-lg flex flex-col items-center justify-center space-x-2"
-              >
-                <div className="rounded-full bg-gray-100 p-3">
-                  {action.icon}
-                </div>
-                <p className="text-gray-700 font-semibold text-center">{action.name}</p>
+            <div className="bg-white p-8 shadow-sm rounded-lg flex flex-col items-center justify-center space-x-2">
+              <div className="rounded-full bg-gray-100 p-3">
+                <Mail size={20} />
               </div>
-            ))}
+              <p className="text-gray-700 font-semibold text-center">Inbox</p>
+            </div>
+            <div className="bg-white p-8 shadow-sm rounded-lg flex flex-col items-center justify-center space-x-2">
+              <div className="rounded-full bg-gray-100 p-3">
+                <UserCheck size={20} />
+              </div>
+              <p className="text-gray-700 font-semibold text-center">
+                Attendance
+              </p>
+            </div>
+            <div className="bg-white p-8 shadow-sm rounded-lg flex flex-col items-center justify-center space-x-2">
+              <div className="rounded-full bg-gray-100 p-3">
+                <Calendar size={20} />
+              </div>
+              <p className="text-gray-700 font-semibold text-center">
+                Timetable
+              </p>
+            </div>
+            <div className="bg-white p-8 shadow-sm rounded-lg flex flex-col items-center justify-center space-x-2">
+              <div className="rounded-full bg-gray-100 p-3">
+                <CreditCard size={20} />
+              </div>
+              <p className="text-gray-700 font-semibold text-center">Fees</p>
+            </div>
+            <Link to="/noticeBoard">
+              <div className="bg-white p-8 cursor-pointer shadow-sm rounded-lg flex flex-col items-center justify-center space-x-2">
+                <div
+                  onClick={() => showNoticeBoardFunction}
+                  className="rounded-full bg-gray-100 p-3"
+                >
+                  <Bell size={20} />
+                </div>
+                <p className="text-gray-700 font-semibold text-center">
+                  Notice
+                </p>
+              </div>
+            </Link>
+            <div className="bg-white p-8 shadow-sm rounded-lg flex flex-col items-center justify-center space-x-2">
+              <div className="rounded-full bg-gray-100 p-3">
+                <Clipboard size={20} />
+              </div>
+              <p className="text-gray-700 font-semibold text-center">
+                Homework
+              </p>
+            </div>
+            <div className="bg-white p-8 shadow-sm rounded-lg flex flex-col items-center justify-center space-x-2">
+              <div className="rounded-full bg-gray-100 p-3">
+                <Library size={20} />
+              </div>
+              <p className="text-gray-700 font-semibold text-center">
+                eLibrary
+              </p>
+            </div>
+            <div className="bg-white p-8 shadow-sm rounded-lg flex flex-col items-center justify-center space-x-2">
+              <div className="rounded-full bg-gray-100 p-3">
+                <FileText size={20} />
+              </div>
+              <p className="text-gray-700 font-semibold text-center">
+                Circular
+              </p>
+            </div>
+            <div className="bg-white p-8 shadow-sm rounded-lg flex flex-col items-center justify-center space-x-2">
+              <div className="rounded-full bg-gray-100 p-3">
+                <FilePenLine size={20} />
+              </div>
+              <p className="text-gray-700 font-semibold text-center">
+                Leave Request
+              </p>
+            </div>
+            <div className="bg-white p-8 shadow-sm rounded-lg flex flex-col items-center justify-center space-x-2">
+              <div className="rounded-full bg-gray-100 p-3">
+                <BookOpen size={20} />
+              </div>
+              <p className="text-gray-700 font-semibold text-center">
+                Examination
+              </p>
+            </div>
           </div>
         </div>
       </main>
 
-      <footer className="text-black flex flex-col md:flex-row bg-gray-50 justify-evenly items-center pt-8 pb-10 mt-5 text-center md:text-left">
-        <div>
-          <h4 className="font-bold">SchoolPortal</h4>
-          <p>&copy; 2024 School Portal. All Rights Reserved.</p>
-        </div>
-        <div>
-          <h4 className="font-bold">Quick Links</h4>
-          <p>About | Contact | Privacy Policy | Terms of Service</p>
-        </div>
-        <div>
-          <h4 className="font-bold">Contact Us</h4>
-          <p>support@schoolportal.com | +91 1234567890</p>
-        </div>
-      </footer>
+     <Footer/>
     </div>
   );
 }

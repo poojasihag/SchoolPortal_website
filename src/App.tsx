@@ -4,6 +4,7 @@ import Academic from "./pages/Academic";
 import Calender from "./pages/Calender";
 import Communication from "./pages/Communication";
 import Resources from "./pages/Resources";
+import NoticeBoard from "./pages/NoticeBoard";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/communication" element={<Communication />} />
             <Route path="/resources" element={<Resources />} />
             <Route path="/calender" element={<Calender />} />
+            <Route path="/noticeBoard" element={<NoticeBoard />} />
           </Routes>
         </div>
         
