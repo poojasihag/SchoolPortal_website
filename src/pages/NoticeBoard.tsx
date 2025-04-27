@@ -163,7 +163,7 @@ export default function NoticeBoard() {
                   <span className="text-sm text-blue-600">{notice.date}</span>
                 </div>
                 {notice.isNew && (
-                  <span className="text-xs bg-red-500 text-white px-2 py-0.5 rounded-full">
+                  <span className="text-xs bg-red-500 text-white px-2 py-0.5  rounded-full">
                     New
                   </span>
                 )}
